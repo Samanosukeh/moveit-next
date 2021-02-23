@@ -1,0 +1,34 @@
+/*  ------CSS Modules
+    O motivo de separar o CSS dos componentes é para quando o projeto crescer nao fique perdido
+    procurando de onde vem o CSS que ta afetando tal parte dos componentes de uma página
+*/
+.experienceBar {
+    display: flex;
+    align-items: center;
+}
+
+.experienceBar span {/*estilizar os textos do span dentro da experience-bar*/
+    font-size: 1rem;
+}
+
+.experienceBar > div {/*pegando apenas a div dentro da expeirnce-bar*/
+    flex: 1;
+    height: 4px;
+    border-radius: var(--gray-line);
+    margin: 0 1.5rem;
+    position: relative;/*relativo por que depois irá colocar uma position absolute dentro*/
+}
+
+/*estilizando a barrinha que carrega dentro de porcentagem de XP*/
+.experienceBar > div > div {
+    height: 4px;
+    border-radius:  4px;
+    background: var(--green);
+}
+
+/*posicao do total de XP até agora*/
+span.currentExperience { /*subistitui current-experience por currentExperience :)*/
+    position: absolute;
+    top: 12px;
+    transform: translateX(-50%);/*deslocar metade do tamanho para a esquerda no eixo X*/
+}

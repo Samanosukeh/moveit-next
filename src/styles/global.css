@@ -66,33 +66,3 @@ a {
     flex-direction: column;/*fica um abaixo do outro*/
 }
 
-.experience-bar {
-    display: flex;
-    align-items: center;
-}
-
-.experience-bar span {/*estilizar os textos do span dentro da experience-bar*/
-    font-size: 1rem;
-}
-
-.experience-bar > div {/*pegando apenas a div dentro da expeirnce-bar*/
-    flex: 1;
-    height: 4px;
-    border-radius: var(--gray-line);
-    margin: 0 1.5rem;
-    position: relative;/*relativo por que depois irá colocar uma position absolute dentro*/
-}
-
-/*estilizando a barrinha que carrega dentro de porcentagem de XP*/
-.experience-bar > div > div {
-    height: 4px;
-    border-radius:  4px;
-    background: var(--green);
-}
-
-/*posicao do total de XP até agora*/
-span.current-experience {
-    position: absolute;
-    top: 12px;
-    transform: translateX(-50%);/*deslocar metade do tamanho para a esquerda no eixo X*/
-}
