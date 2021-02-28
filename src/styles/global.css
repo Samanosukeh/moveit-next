@@ -55,14 +55,3 @@ a {
     color: inherit;/*Herdar a cor dos containers dos links*/
     text-decoration: none;
 }
-
-/*estilizando o container*/
-.container {
-    height: 100vh;/*vai ocupar 100% da tela*/
-    max-width: 992px;
-    margin: 0 auto; /*centralizando tudo*/
-    padding: 2.5rem 2rem;/*2.5rem verticalmente e 2rem horizontalmente*/ 
-    display: flex;
-    flex-direction: column;/*fica um abaixo do outro*/
-}
-
