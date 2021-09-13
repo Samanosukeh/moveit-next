@@ -59,7 +59,7 @@
     transition: background-color 0.2s;/*toda vez que a cor mudar a transicao vai levar 0.2 segundos*/
 }
 
-.countdownButton:hover {/*dar efeito quando passar o mouse por cima dele*/
+.countdownButton:not(:disabled):hover {/*dar efeito quando passar o mouse por cima dele apenas se nao tiver desabilitado*/
     background-color: var(--blue-dark)
 }
 
@@ -68,7 +68,13 @@
     color: var(--title);
 }
 
-.countdownButtonActive:hover {/*mudando a cor do botão quando passar o o mouse em cima*/
+.countdownButtonActive:not(:disabled):hover {/*mudando a cor do botão quando passar o o mouse em cima*/
     background-color: var(--red);/*deixa tudo com aparência de 'cancelar'*/
     color: var(--white);
+}
+
+.countdownButton:disabled {/*quando tiver desabilitado*/
+    background: var(--white);
+    color: var(--text);
+    cursor: not-allowed;
 }

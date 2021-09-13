@@ -14,7 +14,8 @@
 .experienceBar > div {/*pegando apenas a div dentro da expeirnce-bar*/
     flex: 1;
     height: 4px;
-    border-radius: var(--gray-line);
+    border-radius: 4px;
+    background-color: var(--gray-line);/*dá uma cor cinza de fundo na barrinha*/
     margin: 0 1.5rem;
     position: relative;/*relativo por que depois irá colocar uma position absolute dentro*/
 }

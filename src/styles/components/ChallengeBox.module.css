@@ -1,0 +1,111 @@
+.challengeBoxContainer {
+    height: 100%;
+
+    background: var(--white);
+    border-radius: 5px;/*arredondado as bordas*/
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);/*opacidade da sombra ao redor*/
+    padding: 1.5rem 2rem;/*1.5rem em cima e embaixo e 2rem nas laterais*/
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;    
+}
+
+.challengeNotActive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.challengeNotActive strong {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.challengeNotActive p {
+    display: flex;
+    flex-direction: column;/*colocando imagem em cima do texto*/
+    align-items: center;
+    line-height: 1.4;
+    max-width: 70%;/*para o texto ocupar apenas 70%*/
+    margin-top: 3rem;
+}
+
+.challengeNotActive p img {
+    margin-bottom: 1rem;
+}
+
+.challengeActive {/*customizando o desafio quando ativo*/
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.challengeActive header {/*customizando a header dentro do desafio ativo*/
+    color: var(--blue);
+    font-weight: 600;
+    font-size: 600;
+    padding: 0 2rem 1.5rem;
+    border-bottom: 1px solid var(--gray-line);/*linhazinha abaixo da header*/
+}
+
+.challengeActive main {
+    flex: 1;/*botões vão la pra baixo*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.challengeActive main strong {/*estilizando a tag strong dentro do main na classe desafio ativo*/
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--title);
+    margin: 1.5rem 0 1rem;
+}
+
+.challengeActive main p {
+    line-height: 1.5;
+}
+
+.challengeActive footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;/*1 frame do lado do outro*/
+    gap: 1rem;
+}
+
+.challengeActive footer button {/*estilizando os botões*/
+    height: 3rem;/*altura do botão*/
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;/*tirando a borda padrão do botão*/
+    border-radius: 5px;/*arredondando o botão*/
+
+    color: var(--white);
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    transition: filter 0.2s;/*demora 2 milésimos para mudar a cor ao passar o mouse em cima*/
+}
+ 
+.challengeActive footer button.challengeFailedButton {/*deixando o botão esquerdo vermelho*/
+    background: var(--red);
+}
+
+.challengeActive footer button.challengeSuceededButton {
+    background: var(--green);/*deixando o botão verde*/
+}
+
+/*aplicando o hover para os dois botões ao mesmo tempo*/
+.challengeActive footer button:hover {
+    filter: brightness(0.9);/*diminui em 10% o brilho dos botões escurecendo eles*/
+}
