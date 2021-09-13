@@ -4,7 +4,7 @@ import styles from "../styles/components/ChallengeBox.module.css";
 
 export function ChallengeBox() {
     //esse código pode ser usado em qualquer lugar da aplicação
-    const { activeChallenge, resetChallenge } = useContext(ChallengesContext);//passando o contexto como argumento
+    const { activeChallenge, resetChallenge, completeChallenge } = useContext(ChallengesContext);//passando o contexto como argumento
 
     return(
         <div className={styles.challengeBoxContainer}>
@@ -26,9 +26,7 @@ export function ChallengeBox() {
                         >
                             Falhei
                         </button>
-                        <button type="button"
-                         className={styles.challengeSuceededButton}
-                        >
+                        <button type="button" className={styles.challengeSuceededButton} onClick={completeChallenge}>
                             Completei
                         </button>
                     </footer>
