@@ -23,6 +23,7 @@ interface ChallengeContextData {//essa interface cuida de sugerir o que usar na 
     levelUp: () => void;//é uma função que nao tem retorno
     startNewChallenge: () => void;
     resetChallenge: () => void;
+    completeChallenge: () => void;
 }
 
 export const ChallengesContext = createContext({} as ChallengeContextData)
@@ -53,12 +54,41 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {/*vai
         setActiveChallenge(null);
     }
 
+    function completeChallenge(){
+        if (!activeChallenge){//se o usário não tiver com um desafio ativo...
+            return;
+        }
+
+        const { amount } = activeChallenge;
+
+        let finalExperience = currentExperience + amount;
+
+        if (finalExperience >= experienceToNextLevel) { //se a quantidade de xp for maior que a barrinha tem atualmente.
+            finalExperience = finalExperience - experienceToNextLevel;//nova quantidade de xp vai ser o que sobrar, ex: 150 - 100 = 50xp no prox nível
+            levelUp();
+        }
+
+        setCurrentExperience(finalExperience);
+        setActiveChallenge(null);//zerando o desafio
+        setChallengesCompleted(challengesCompleted + 1); //desafios completo + 1
+
+    }
+
     return(
         /*value={'teste'} é o que ele vai enviar, pode enviar um objeto/dicionário com várias informações sobre o usuário
         até funções
         como o nivel, nome e outros dados*/
         <ChallengesContext.Provider
-          value={{level, currentExperience, experienceToNextLevel, challengesCompleted, activeChallenge, levelUp, startNewChallenge, resetChallenge}}> {/*todos os elementos dentro do provider vai ter acesso aos dados do contexto*/}
+          value={{level, 
+          currentExperience, 
+          experienceToNextLevel, 
+          challengesCompleted, 
+          activeChallenge, 
+          levelUp, 
+          startNewChallenge, 
+          resetChallenge,
+          completeChallenge
+          }}> {/*todos os elementos dentro do provider vai ter acesso aos dados do contexto*/}
           {children}
         </ChallengesContext.Provider>
     );
