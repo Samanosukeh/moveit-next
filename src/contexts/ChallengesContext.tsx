@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 import challenges from "../../challenges.json";
 
 
@@ -33,6 +33,10 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {/*vai
     const [currentExperience, setCurrentExperience] = useState(30);//xp sempre começa em 0
     const [challengesCompleted, setChallengesCompleted] = useState(0);
 
+    useEffect(() => {
+        Notification.requestPermission(); //pedindo permissão para mostrar notificações
+    }, []);//segundo parâmetro vazio, quer dizer que essa função vai ser executada uma única vez ao ser exibido em tela
+
     function levelUp(){
         setLevel(level + 1); //upando o level
     }
@@ -47,6 +51,15 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {/*vai
         const challenge = challenges[randomChallengeIndex];
 
         setActiveChallenge(challenge);
+
+        new Audio('/public_notification.mp3').play();
+
+        //se o usuário deu permissões para enviar notificações pra ele...
+        if (Notification.permission === 'granted') {
+            new Notification('Novo desafio 🎉', {
+                body: `Valendo ${challenge.amount}xp`
+            });
+        }
     }
 
     //função chamada quando usuario falhar

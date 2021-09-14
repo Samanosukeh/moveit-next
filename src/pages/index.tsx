@@ -8,6 +8,7 @@ import { CompletedChallenges } from "../components/CompletedChallenges";
 
 
 import styles from "../styles/pages/Home.module.css";
+import { CountdownProvider } from '../contexts/CountdownContext';
 
 export default function Home() {
   return (
@@ -17,17 +18,19 @@ export default function Home() {
       </Head>
       <ExperienceBar /> {/** Mostrando aqui o componente da barrinha de XP do cara */}
 
-      <section>{/**Criando uma section para separar esse conteúdo */}
-        <div>
-          <Profile /> {/**Import do componente Profile aqui.. */}
-          <CompletedChallenges /> {/**Importando o componente de Desafios abaixo de perfil */}
-          <Countdown />
-        </div>
+      <CountdownProvider>
+        <section>{/**Criando uma section para separar esse conteúdo */}
+          <div>
+            <Profile /> {/**Import do componente Profile aqui.. */}
+            <CompletedChallenges /> {/**Importando o componente de Desafios abaixo de perfil */}
+            <Countdown />
+          </div>
 
-        <div>
-          <ChallengeBox />
-        </div>
-      </section>
+          <div>
+            <ChallengeBox />
+          </div>
+        </section>
+      </CountdownProvider>
     </div>
   )
 }
