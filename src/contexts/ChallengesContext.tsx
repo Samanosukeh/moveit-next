@@ -1,11 +1,14 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
+import Cookies from "js-cookie";
 import challenges from "../../challenges.json";
-
 
 /*boa prática falar qual é o tipo do 'children'
   deixando children tipado*/
 interface ChallengesProviderProps {
     children: ReactNode;//aceita qualquer elemento filho como componente, html
+    level: number;
+    currentExperience: number;
+    challengesCompleted: number;
 }
 
 interface Challenge {//definindo que tipo de objeto challenge é
@@ -27,15 +30,21 @@ interface ChallengeContextData {//essa interface cuida de sugerir o que usar na 
 }
 
 export const ChallengesContext = createContext({} as ChallengeContextData)
-
-export function ChallengesProvider({ children }: ChallengesProviderProps) {/*vai ser chamado no _app*/
-    const [level, setLevel] = useState(1); //criando um estado e o level=1 inicial
-    const [currentExperience, setCurrentExperience] = useState(30);//xp sempre começa em 0
-    const [challengesCompleted, setChallengesCompleted] = useState(0);
+//...rest pega todo o resto dos parâmetros e acopla num único objeto :)
+export function ChallengesProvider({ children, ...rest }: ChallengesProviderProps) {/*vai ser chamado no _app*/
+    const [level, setLevel] = useState(rest.level ?? 1); //criando um estado e o level=1 inicial
+    const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0);//xp sempre começa em 0
+    const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0);// se não existir (??) recebe 0
 
     useEffect(() => {
         Notification.requestPermission(); //pedindo permissão para mostrar notificações
     }, []);//segundo parâmetro vazio, quer dizer que essa função vai ser executada uma única vez ao ser exibido em tela
+
+    useEffect(() => { //salvar nos cookies sempre que mudar algo no nível
+        Cookies.set("level", String(level));
+        Cookies.set("currentExperience", String(currentExperience));
+        Cookies.set("challengesCompleted", String(challengesCompleted));
+    }, [level, currentExperience, challengesCompleted]);
 
     function levelUp(){
         setLevel(level + 1); //upando o level

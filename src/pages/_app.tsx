@@ -1,15 +1,11 @@
 import '../styles/global.css'
 
-import { ChallengesProvider } from '../contexts/ChallengesContext'
-
 //reaproveitar uma coisa que nao muda em todas as páginas
 function MyApp({ Component, pageProps }) {//exemplo uma SideBar
   
 
   return(
-    <ChallengesProvider>
-      <Component {...pageProps} />
-    </ChallengesProvider>
+    <Component {...pageProps} />
   ) 
 }//tudo que vai repetir em todas as págninas fica no _app
 
