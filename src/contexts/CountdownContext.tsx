@@ -35,7 +35,7 @@ export function CountdownProvider({ children }: CountdownContextProps) {
         clearTimeout(countdownTimeout);//cancelando a contagem de tempo após pausar
         setIsActive(false);//parar o contador
         setHasFinished(false);
-        setTime(0.1 * 60);//resetando o tempo para o valor de origem
+        setTime(25 * 60);//resetando o tempo para o valor de origem
     }
 
     //executar uma função sempre que uma variavel mudar, no nosso caso isActive
