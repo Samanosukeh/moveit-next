@@ -20,7 +20,7 @@ let countdownTimeout: NodeJS.Timeout;
 
 export function CountdownProvider({ children }: CountdownContextProps) {
     const { startNewChallenge } = useContext(ChallengesContext);//{} desestrutura para pegar apenas um atributo ou método
-    const [time, setTime] = useState(0.1 * 60);//25min * 60 segundos
+    const [time, setTime] = useState(25 * 60);//25min * 60 segundos
     const [isActive, setIsActive] = useState(false); //iniciar nao ativo, precisa clicar para ativar
     const [hasFinished, setHasFinished] = useState(false);//inicia como falso pois o estado de terminado nao é vdd até acabar
 
