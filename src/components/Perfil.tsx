@@ -6,7 +6,9 @@ export function Profile() {
     const { level } = useContext(ChallengesContext);
     return (
         <div className={styles.profileContainer}>
-            <img src="https://github.com/Samanosukeh.png" alt="Flauberth Duarte"/>
+            <a href="https://github.com/Samanosukeh" target="_blank" rel="noopener noreferrer">
+                <img src="https://github.com/Samanosukeh.png" alt="Flauberth Duarte"/>
+            </a>
             <div>
                 <strong>Flauberth Duarte</strong>
                 <p>

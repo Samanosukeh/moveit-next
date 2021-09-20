@@ -3,7 +3,7 @@
     align-items: center;
 }
 
-.profileContainer > img {
+.profileContainer > a > img {
     width: 5.5rem;/*largura da foto de perfil*/
     height: 5.5rem;
     border-radius: 50%; /*Arredondando a foto de perfil*/
