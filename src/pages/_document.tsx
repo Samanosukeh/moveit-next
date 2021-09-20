@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from 'next/Document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 //Aqui vai tudo que é estatico
 export default class MyDocument extends Document {
     render() {
