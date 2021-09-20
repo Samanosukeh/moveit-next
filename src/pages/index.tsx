@@ -19,7 +19,6 @@ interface HomeProps {
 }
 
 export default function Home(props) { //props da propria página, função async abaixo...
-  console.log(props);
   
   return (
     <ChallengesProvider 
